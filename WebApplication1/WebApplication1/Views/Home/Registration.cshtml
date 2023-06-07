@@ -1,0 +1,62 @@
+﻿<style>
+
+
+    .form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 5px;
+        margin: 50px;
+        padding: 50px;
+        background-color: #26252d;
+    }
+
+    reg {
+        font-size: 30px;
+        text-transform: uppercase;
+        padding: 0 20px;
+        color: white;
+        font-family: 'Courier New';
+    }
+
+    .form input {
+        font-size: 18px;
+        padding: 5px;
+        margin: 5px 0;
+    }
+</style>
+<form asp-action="Registration" method="post">
+<div class="text-center">
+    <div class="form">
+        <h1 class="reg">Регистрация</h1>
+            <input name="name" id="name" type="text" placeholder="Имя" />
+            <input name="surname" id="surname" type="text" placeholder="Фамилия" />
+            <input name="login" id="login" type="text" placeholder="Логин" />
+            <input name="password" id="password" type="password" placeholder="Пароль" />
+        <a aspcontroller="Home" asp-action="Login">Войти</a>
+        <button class="btn btn-primary" asp-action="Registration">Зарегистрироваться</button>
+    </div>
+</div>
+</form>
+
+<script>
+    // Определение функции для вывода сообщения на странице
+    function showNotification(message) {
+        // Создание элемента div для сообщения
+        var notification = document.createElement("div");
+        notification.className = "notification";
+        notification.innerHTML = message;
+
+        // Добавление элемента на страницу
+        document.body.appendChild(notification);
+
+        // Автоматическое скрытие сообщения через 5 секунд
+        setTimeout(function () {
+            notification.parentNode.removeChild(notification);
+        }, 5000);
+    }
+
+    // Вызов функции для вывода уведомления из C# кода
+    showNotification("@ViewBag.Message");
+</script>
